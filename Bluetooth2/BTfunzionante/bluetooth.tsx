@@ -7,8 +7,11 @@ import Base64 from '../../components/Base64';
 import {useNavigation} from '@react-navigation/native';
 import BluetoothStyles from '../../styles/BluetoothStyles';
 import CustomButtonBT from '../../components/CustomButtonBT';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 const Bluetooth = () => {
+  const [spinner, setSpinner] = useState(false);
+  const spinnerLoader = spinner;
   const [scannedDevices, setScannedDevices] = useState([]);
   const [scannedDeviceCount, setScannedDeviceCount] = useState(0);
   const [connectedDevice, setConnectedDevice] = useState(null);
@@ -133,42 +136,50 @@ const Bluetooth = () => {
   }
 
   function connect(_device) {
-    _bleManager.current.connectToDevice(_device.id).then(connectedDevice => {
-      connectedDevice
-        .discoverAllServicesAndCharacteristics()
-        .then(discoveredDev => {
-          discoveredDev.services().then(async services => {
-            for (const service of services) {
-              const characteristics = await service.characteristics();
-              for (const characteristic of characteristics) {
-                console.log('Characteristic UUID:', characteristic.uuid);
-                if (characteristic.uuid.toLowerCase().includes('00002a19')) {
-                  characteristic.read().then(value => {
-                    console.log(value.value);
-                    const batteryString = Base64.atob(value.value);
-                    const newBattery = batteryString.charCodeAt(0);
-                    console.log(
-                      'Percentuale di carica della batteria:',
-                      newBattery,
-                    );
+    setSpinner(true);
+    _bleManager.current.connectToDevice(_device.id).then(
+      connectedDevice => {
+        connectedDevice
+          .discoverAllServicesAndCharacteristics()
+          .then(discoveredDev => {
+            discoveredDev.services().then(async services => {
+              for (const service of services) {
+                const characteristics = await service.characteristics();
+                for (const characteristic of characteristics) {
+                  console.log('Characteristic UUID:', characteristic.uuid);
+                  if (characteristic.uuid.toLowerCase().includes('00002a19')) {
+                    characteristic.read().then(value => {
+                      console.log(value.value);
+                      const batteryString = Base64.atob(value.value);
+                      const newBattery = batteryString.charCodeAt(0);
+                      console.log(
+                        'Percentuale di carica della batteria:',
+                        newBattery,
+                      );
 
-                    // Aggiorna le variabili di stato
-                    setBatteryLevel(newBattery);
-                    setCharacteristicUUID(characteristic.uuid);
-                    setSelectedDevice(connectedDevice);
-                  });
+                      // Aggiorna le variabili di stato
+                      setBatteryLevel(newBattery);
+                      setCharacteristicUUID(characteristic.uuid);
+                      setSelectedDevice(connectedDevice);
+                      setSpinner(false);
+                    });
+                  }
                 }
               }
-            }
+            });
           });
-        });
 
-      // Gestisci la disconnessione
-      connectedDevice.onDisconnected(() => {
-        setIsDisconnectedModalVisible(true);
-        setSelectedDevice(null);
-      });
-    });
+        // Gestisci la disconnessione
+        connectedDevice.onDisconnected(() => {
+          setIsDisconnectedModalVisible(true);
+          setSelectedDevice(null);
+        });
+      },
+      err => {
+        Alert.alert('Connessione non riuscita');
+        setSpinner(false);
+      },
+    );
   }
 
   function createBLESubscription() {
@@ -207,8 +218,25 @@ const Bluetooth = () => {
     });
   }
 
+  function stopBluetoothConnection(deviceId) {
+    _bleManager.current.cancelDeviceConnection(deviceId).then(
+      res => {
+        Alert.alert('Disconnessione riuscita!');
+        setSelectedDevice(null);
+      },
+      err => {
+        Alert.alert('Attenzione, non sono riuscito a disconnetterti');
+      },
+    );
+  }
+
   return (
     <View>
+      <Spinner
+        visible={spinner}
+        textContent={'Loading...'}
+        textStyle={styles.spinnerTextStyle}
+      />
       <Text>Hello World</Text>
       <Button title="Scan" onPress={deviceScan} />
       <Button title="Stop Scan" onPress={deviceStopScan} />
@@ -248,7 +276,10 @@ const Bluetooth = () => {
             Characteristic UUID: {characteristicUUID}
           </Text>
 
-          <Button title="Close" onPress={() => setSelectedDevice(null)} />
+          <Button
+            title="Close"
+            onPress={() => stopBluetoothConnection(selectedDevice?.id)}
+          />
         </View>
       </Modal>
 
