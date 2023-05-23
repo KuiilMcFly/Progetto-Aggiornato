@@ -3,9 +3,11 @@ import { StyleSheet, View, ScrollView } from "react-native";
 import MaterialHeader11 from "./components/MaterialHeader11";
 import D from "./components/D";
 import MaterialIconButtonsFooter2 from "./components/MaterialIconButtonsFooter2";
-
+import CustomButtonBT from '../../components/CustomButtonBT';
+import BluetoothStyles from '../../styles/BluetoothStyles';
+import { Button } from "react-native-elements";
 function IndexBluetooth(props) {
-
+console.log(props);
   return (
     <View style={styles.container}>
       <MaterialHeader11 style={styles.materialHeader11}></MaterialHeader11>
@@ -14,12 +16,12 @@ function IndexBluetooth(props) {
         <ScrollView
           contentContainerStyle={styles.scrollBluetooth_contentContainerStyle}
         >
-            {scannedDevices.map(device => (
-          <CustomButtonBT
+            {props.scannedDevices.map(device => (
+          <Button
             key={device.id}
             title={`${device.name}`}
-            onPress={() => connect(device)}
-            style={BluetoothStyles.btButton}
+            onPress={() => props.onPressConnect(device)}
+     
           />
         ))}
         </ScrollView>

@@ -236,7 +236,54 @@ const Bluetooth = props => {
       onPressPrimary={activeBluetooth}
       onPressDanger={stopBluetooth}
       onPressViolet2={deviceScan}
-      onPressViolet3={deviceStopScan}></IndexBluetooth>
+      onPressViolet3={deviceStopScan}
+      scannedDevices={scannedDevices}
+      onPressConnect={connect}>
+      <Modal visible={!!selectedDevice} animationType="slide">
+        <View
+          style={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: 10,
+          }}>
+          <Text style={styles.deviceData}>{selectedDevice?.name || ''}</Text>
+          <Text style={styles.deviceData}>{selectedDevice?.id || ''}</Text>
+
+          <Text style={styles.deviceData}>
+            Current connection status:{' '}
+            {selectedDevice ? 'Connected' : 'Not connected'}
+          </Text>
+
+          <Text style={styles.deviceData}>
+            Percentuale di carica della batteria: {batteryLevel}%
+          </Text>
+
+          <Text style={styles.deviceData}>
+            Characteristic UUID: {characteristicUUID}
+          </Text>
+
+          <Button
+            title="Close"
+            onPress={() => stopBluetoothConnection(selectedDevice?.id)}
+          />
+        </View>
+      </Modal>
+
+      <Modal visible={isDisconnectedModalVisible} animationType="slide">
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <Text style={styles.deviceData}>Connessione interrotta</Text>
+          <Button
+            title="Torna alla schermata principale"
+            onPress={() => {
+              setIsDisconnectedModalVisible(false);
+              navigation.navigate('Homepage');
+            }}
+          />
+        </View>
+      </Modal>
+    </IndexBluetooth>
+
     /*   <View>
       <Spinner
         visible={spinner}
