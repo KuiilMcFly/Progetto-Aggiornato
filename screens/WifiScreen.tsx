@@ -65,23 +65,32 @@ const WifiScreen = () => {
   function deviceScan() {
     requestLocationPermission().then(permission => {
       if (permission) {
-        let timerId: number;
-        const wifiList = new Map();
+        WifiManager.isEnabled().then(
+          res => {
+            if (res) {
+              let timerId: number;
+              const wifiList = new Map();
+              WifiManager.loadWifiList().then(wifi => {
+                wifi.forEach(element => {
+                  if (!wifiList.has(element.SSID)) {
+                    wifiList.set(element.SSID, {
+                      SSID: element.SSID,
+                      level: element.level,
+                    });
 
-        WifiManager.loadWifiList().then(wifi => {
-          console.log(wifi);
-          wifi.forEach(element => {
-            if (!wifiList.has(element.SSID)) {
-              wifiList.set(element.SSID, {
-                SSID: element.SSID,
-                level: element.level,
+                    setScannedDeviceCount(count => count + 1);
+                    setScannedWifi(Array.from(wifiList.values()));
+                  }
+                });
               });
-
-              setScannedDeviceCount(count => count + 1);
-              setScannedWifi(Array.from(wifiList.values()));
+            } else {
+              Alert.alert('Attenzione il wifi non è abilitato');
             }
-          });
-        });
+          },
+          err => {
+            Alert.alert('Attenzione il wifi non è abilitato');
+          },
+        );
       }
     });
   }
