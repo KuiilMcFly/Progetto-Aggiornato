@@ -32,14 +32,8 @@ const Bluetooth = () => {
   }, []);
 
   useEffect(() => {
-    if (isBluetoothEnabled === false) {
-      Alert.alert(
-        'Bluetooth non attivo',
-        'Per effettuare la scansione dei dispositivi, attiva il Bluetooth.',
-        [{text: 'OK'}],
-      );
-    }
-  }, [isBluetoothEnabled]);
+    createBLESubscription();
+  });
 
   const requestLocationPermission = async () => {
     try {
@@ -91,6 +85,7 @@ const Bluetooth = () => {
   };
 
   function deviceScan() {
+    createBLESubscription();
     requestLocationPermission().then(permission => {
       if (permission) {
         let timerId: number;
@@ -175,6 +170,31 @@ const Bluetooth = () => {
       });
     });
   }
+
+  function createBLESubscription() {
+    const subscription = _bleManager.current.onStateChange(async state => {
+      console.log('Device Bluetooth state changed to ', state);
+      if (state === 'PoweredOn') {
+        setBluetoothEnabled(true);
+        subscription.remove();
+        return true;
+      } else if (state === 'PoweredOff') {
+        Alert.alert(
+          'Bluetooth non attivo',
+          'Per effettuare la scansione dei dispositivi, attiva il Bluetooth.',
+          [{text: 'OK'}],
+        );
+        //Bluetooth is not currently powered on and available to use.
+        setBluetoothEnabled(false);
+        return false;
+      } else {
+        subscription.remove();
+        console.error('unhandled status [' + state + ']. Stopped scan');
+      }
+      subscription.remove();
+    }, true);
+  }
+
   function activeBluetooth() {
     _bleManager.current.enable().then(state => {
       Alert.alert('bluetooth attivato!');
