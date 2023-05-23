@@ -175,7 +175,7 @@ function AppNavigation() {
       locale={i18n.language}
       messages={i18n.getResourceBundle(i18n.language)}>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Home" component={App} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="bluetooth" component={bluetooth} />

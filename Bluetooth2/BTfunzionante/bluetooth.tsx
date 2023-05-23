@@ -8,8 +8,9 @@ import {useNavigation} from '@react-navigation/native';
 import BluetoothStyles from '../../styles/BluetoothStyles';
 import CustomButtonBT from '../../components/CustomButtonBT';
 import Spinner from 'react-native-loading-spinner-overlay';
+import IndexBluetooth from '../../components/BluetoothComponents';
 
-const Bluetooth = () => {
+const Bluetooth = props => {
   const [spinner, setSpinner] = useState(false);
   const spinnerLoader = spinner;
   const [scannedDevices, setScannedDevices] = useState([]);
@@ -231,7 +232,12 @@ const Bluetooth = () => {
   }
 
   return (
-    <View>
+    <IndexBluetooth
+      onPressPrimary={activeBluetooth}
+      onPressDanger={stopBluetooth}
+      onPressViolet2={deviceScan}
+      onPressViolet3={deviceStopScan}></IndexBluetooth>
+    /*   <View>
       <Spinner
         visible={spinner}
         textContent={'Loading...'}
@@ -295,7 +301,7 @@ const Bluetooth = () => {
           />
         </View>
       </Modal>
-    </View>
+    </View> */
   );
 };
 export default Bluetooth;

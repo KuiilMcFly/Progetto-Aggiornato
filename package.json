@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@builderx/utils": "^0.1.6",
     "@react-native-firebase/app": "^17.4.3",
     "@react-native-picker/picker": "^2.4.10",
     "@react-navigation/native": "^6.1.6",
