@@ -193,7 +193,7 @@ function AppNavigation() {
           <Stack.Screen name="Home" component={App} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="bluetooth" component={bluetooth} />
-          <Stack.Screen name="Wifi" component={Wifi} />
+          <Stack.Screen name="Wifi" component={WifiScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </IntlProvider>

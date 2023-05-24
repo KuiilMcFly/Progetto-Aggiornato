@@ -3,19 +3,34 @@ import { StyleSheet, View, ScrollView } from "react-native";
 import MaterialHeader11 from "../../../BluetoothComponents/components/MaterialHeader11";
 import MaterialButtonViolet13 from "../components/MaterialButtonViolet13";
 import MaterialIconButtonsFooter2 from "../../../BluetoothComponents/components/MaterialIconButtonsFooter2";
+import { Button } from "react-native-elements";
 
-function Wifi({navigation}, ...props) {
+function Wifi({navigation, ...props} ) {
   return (
     <View style={styles.container}>
       <View style={styles.group1}>
         <MaterialHeader11 title="Wi-fi" style={styles.materialHeader1}></MaterialHeader11>
-        <MaterialButtonViolet13
+        <MaterialButtonViolet13 onPress={props.onPress}
           style={styles.materialButtonViolet13}
         ></MaterialButtonViolet13>
         <View style={styles.scrollArea}>
           <ScrollView
             contentContainerStyle={styles.scrollArea_contentContainerStyle}
-          ></ScrollView>
+          >
+
+
+       
+          {props.scannedWifi.map(device => (
+            <Button
+              key={device.SSID}
+              label={`${device.SSID}`}
+              onPress={() => selectWifi(device)}
+            
+            />
+          ))}
+     
+
+          </ScrollView>
         </View>
         <MaterialIconButtonsFooter2
           title="Wi-fi"

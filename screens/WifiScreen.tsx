@@ -19,8 +19,9 @@ import {State as BleState} from 'react-native-ble-plx';
 import WifiManager from 'react-native-wifi-reborn';
 import BluetoothStyles from '../styles/BluetoothStyles';
 import CustomButtonBT from '../components/CustomButtonBT';
+import {Wifi} from '../components/Wi-fiComponents';
 
-const WifiScreen = () => {
+const WifiScreen = props => {
   const [passwordWifi, setPasswordWifi] = useState('');
   const [scannedWifi, setScannedWifi] = useState([]);
   const [scannedDeviceCount, setScannedDeviceCount] = useState(0);
@@ -78,7 +79,7 @@ const WifiScreen = () => {
                       SSID: element.SSID,
                       level: element.level,
                     });
-                    WifiManager.setScannedDeviceCount(count => count + 1);
+                    setScannedDeviceCount(count => count + 1);
                     setScannedWifi(Array.from(wifiList.values()));
                   }
                 });
@@ -118,22 +119,12 @@ const WifiScreen = () => {
 
   return (
     <View>
-      <Text>Hello World</Text>
-      <Button title="Scan Wifi " onPress={deviceScan} />
-      {/*       <Button title="Stop Scan Wifi" onPress={} /> */}
+      <Wifi
+        navigation={props}
+        onPress={deviceScan}
+        scannedWifi={scannedWifi}></Wifi>
 
-      <ScrollView>
-        <View style={BluetoothStyles.btnContainer}>
-          {scannedWifi.map(device => (
-            <CustomButtonBT
-              key={device.SSID}
-              label={`${device.SSID}`}
-              onPress={() => selectWifi(device)}
-              style={BluetoothStyles.btButton}
-            />
-          ))}
-        </View>
-      </ScrollView>
+      {/* 
       <Modal visible={!!connectedDevice} animationType="slide">
         <View
           style={{
@@ -143,7 +134,7 @@ const WifiScreen = () => {
             gap: 10,
           }}>
           <Text style={styles.deviceData}>{connectedDevice?.SSID || ''}</Text>
-          {/*           <Text  style={styles.deviceData}>Status: {connectedDevice?.SSID || ''}</Text> */}
+        
           <TextInput
             placeholder="password"
             style={styles.deviceData}
@@ -172,7 +163,7 @@ const WifiScreen = () => {
             }}
           />
         </View>
-      </Modal>
+      </Modal> */}
     </View>
   );
 };

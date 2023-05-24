@@ -9,8 +9,6 @@ import { Button } from "react-native-elements";
 
 
 function IndexBluetooth({ navigation, ...props }) {
-console.log(props);
-console.log(navigation); 
   return (
     <View style={styles.container}>
       <MaterialHeader11 title="Bluetooth" style={styles.materialHeader11}></MaterialHeader11>
