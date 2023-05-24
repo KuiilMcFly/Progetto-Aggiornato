@@ -233,6 +233,7 @@ const Bluetooth = props => {
 
   return (
     <IndexBluetooth
+      navigation={navigation}
       onPressPrimary={activeBluetooth}
       onPressDanger={stopBluetooth}
       onPressViolet2={deviceScan}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Image } from "react-native";
+import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
 
-function MaterialIconButtonsFooter2(props) {
+function MaterialIconButtonsFooter2({ navigation, ...props }) {
   return (
     <View style={[styles.container, props.style]}>
       <View style={styles.group}>
@@ -9,12 +9,15 @@ function MaterialIconButtonsFooter2(props) {
           source={require("../assets/images/bluetooth_(2)3.png")}
           resizeMode="contain"
           style={styles.image}
+          
         ></Image>
-        <Image
-          source={require("../assets/images/home_(2)3.png")}
-          resizeMode="contain"
-          style={styles.image2}
-        ></Image>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+      <Image
+        source={require("../assets/images/home_(2)3.png")}
+        resizeMode="contain"
+        style={styles.image2}
+      />
+    </TouchableOpacity>
         <Image
           source={require("../assets/images/wifi_(1)3.png")}
           resizeMode="contain"

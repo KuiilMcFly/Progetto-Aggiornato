@@ -6,8 +6,11 @@ import MaterialIconButtonsFooter2 from "./components/MaterialIconButtonsFooter2"
 import CustomButtonBT from '../../components/CustomButtonBT';
 import BluetoothStyles from '../../styles/BluetoothStyles';
 import { Button } from "react-native-elements";
-function IndexBluetooth(props) {
+
+
+function IndexBluetooth({ navigation, ...props }) {
 console.log(props);
+console.log(navigation); 
   return (
     <View style={styles.container}>
       <MaterialHeader11 style={styles.materialHeader11}></MaterialHeader11>
@@ -27,6 +30,7 @@ console.log(props);
         </ScrollView>
       </View>
       <MaterialIconButtonsFooter2
+        navigation={navigation}
         style={styles.footerBluetooth}
       ></MaterialIconButtonsFooter2>
     </View>
@@ -49,13 +53,13 @@ const styles = StyleSheet.create({
     height: 133
   },
   scrollBluetooth: {
-    width: 317,
-    height: 425,
+    width: "90%",
+    height: "60%",
     backgroundColor: "rgba(230, 230, 230,1)"
   },
   scrollBluetooth_contentContainerStyle: {
     height: 425,
-    width: 317
+    width: "100%",
   },
   footerBluetooth: {
     height: 56,
