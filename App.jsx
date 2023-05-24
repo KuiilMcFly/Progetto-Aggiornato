@@ -131,47 +131,51 @@ const App = ({navigation}) => {
         flexGrow: 1,
         flexShrink: 0,
       }}>
-      <MaterialHeader11 title="Home" />
-      <View style={{justifyContent: 'space-between', flex: 1}}>
-        <DrawerLayoutAndroid
-          ref={ref => (drawerRef = ref)}
-          drawerWidth={300}
-          drawerPosition="left"
-          renderNavigationView={drawerNavigation}>
-          <ScrollView style={styles.scrollView}>
-            <Text
-              style={{
-                fontSize: 20,
-                fontWeight: 'bold',
-                marginBottom: 1,
-                color: 'black',
-              }}>
-              {t('title')}
-            </Text>
-            <Text>{t('description')}</Text>
+      <View style={{flex: 1, flexDirection: 'column'}}>
+        <MaterialHeader11 title="Home" style={{flex: 0}} />
+        <View style={{justifyContent: 'space-between', flex: 1}}>
+          <DrawerLayoutAndroid
+            ref={ref => (drawerRef = ref)}
+            drawerWidth={300}
+            drawerPosition="left"
+            renderNavigationView={drawerNavigation}>
+            <ScrollView style={styles.scrollView}>
+              <View style={{flex: 1, justifyContent: 'center'}}>
+                <Text
+                  style={{
+                    fontSize: 20,
+                    fontWeight: 'bold',
+                    marginBottom: 1,
+                    color: 'black',
+                  }}>
+                  {t('title')}
+                </Text>
+                <Text>{t('description')}</Text>
 
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-evenly',
-                alignItems: 'center',
-              }}>
-              <Button
-                title={t('login')}
-                onPress={() => navigation.navigate('Login')}
-              />
-              <Button
-                title={t('bluetooth')}
-                onPress={() => navigation.navigate('bluetooth')}
-              />
-              <Button
-                title={t('WifiScreen')}
-                onPress={() => navigation.navigate('Wifi')}
-              />
-            </View>
-            <MaterialIconButtonsFooter2 navigation={navigation} />
-          </ScrollView>
-        </DrawerLayoutAndroid>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-evenly',
+                    alignItems: 'center',
+                  }}>
+                  <Button
+                    title={t('login')}
+                    onPress={() => navigation.navigate('Login')}
+                  />
+                  <Button
+                    title={t('bluetooth')}
+                    onPress={() => navigation.navigate('bluetooth')}
+                  />
+                  <Button
+                    title={t('WifiScreen')}
+                    onPress={() => navigation.navigate('Wifi')}
+                  />
+                </View>
+              </View>
+            </ScrollView>
+          </DrawerLayoutAndroid>
+        </View>
+        <MaterialIconButtonsFooter2 navigation={navigation} style={{flex: 0}} />
       </View>
     </SafeAreaView>
   );
