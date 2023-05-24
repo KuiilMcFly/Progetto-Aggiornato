@@ -39,14 +39,14 @@ const styles = StyleSheet.create({
     shadowRadius: 1.2,
     elevation: 3
   },
+
   group: {
-    width: 268,
-    height: 42,
+    flex: 1,
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
-    marginLeft: 53,
-    marginTop: 7
+    justifyContent: 'space-around',
+  
+    
   },
   image: {
     width: 33,
