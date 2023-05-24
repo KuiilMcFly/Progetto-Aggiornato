@@ -118,9 +118,9 @@ const WifiScreen = props => {
   }
 
   return (
-    <View>
+    <View style={{flexGrow: 1}}>
       <Wifi
-        navigation={props}
+        navigation={navigation}
         onPress={deviceScan}
         scannedWifi={scannedWifi}></Wifi>
 

@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(230, 230, 230,1)"
   },
   scrollArea_contentContainerStyle: {
-    height: 460,
+    height: '100%',
     width: 294
   },
   footerBluetooth1: {
