@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   materialHeader11: {
-    width: 360,
+    width: "100%",
     height: 56
   },
   bottoniBluetooth: {
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   },
   footerBluetooth: {
     height: 56,
-    width: 360
+    width: "100%",
   }
 });
 
