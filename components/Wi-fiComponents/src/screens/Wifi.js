@@ -9,7 +9,7 @@ function Wifi({navigation, ...props} ) {
   return (
     <View style={styles.container}>
       <View style={styles.group1}>
-        <MaterialHeader11 title="Wi-fi" style={styles.materialHeader1}></MaterialHeader11>
+        <MaterialHeader11 navigation={navigation} title="Wi-fi" style={styles.materialHeader1}></MaterialHeader11>
         <MaterialButtonViolet13 onPress={props.onPress}
           style={styles.materialButtonViolet13}
         ></MaterialButtonViolet13>

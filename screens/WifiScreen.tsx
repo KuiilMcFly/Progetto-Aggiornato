@@ -8,17 +8,14 @@ import {
   Alert,
   TextInput,
 } from 'react-native';
-import {BleManager} from 'react-native-ble-plx';
-import {LogBox} from 'react-native';
+
 import {PERMISSIONS, request, RESULTS} from 'react-native-permissions';
 import styles from '../styles';
-import Base64 from '../components/Base64';
+
 import {useNavigation} from '@react-navigation/native';
-import {PermissionsAndroid, Platform} from 'react-native';
-import {State as BleState} from 'react-native-ble-plx';
+
 import WifiManager from 'react-native-wifi-reborn';
-import BluetoothStyles from '../styles/BluetoothStyles';
-import CustomButtonBT from '../components/CustomButtonBT';
+
 import {Wifi} from '../components/Wi-fiComponents';
 
 const WifiScreen = props => {
