@@ -21,7 +21,7 @@ import {ScrollView} from 'react-native';
 import WifiScreen from './screens/WifiScreen';
 import Wifi from './components/Wi-fiComponents/src/screens/Wifi';
 import MaterialIconButtonsFooter2 from './components/BluetoothComponents/components/MaterialIconButtonsFooter2';
-
+import MaterialHeader11 from './components/BluetoothComponents/components/MaterialHeader11';
 // Configura l'istanza Intl
 const intl = createIntl({
   locale: i18n.language,
@@ -127,6 +127,7 @@ const App = ({navigation}) => {
 
   return (
     <SafeAreaView style={{flex: 1}}>
+      <MaterialHeader11 title="Home" />
       <DrawerLayoutAndroid
         ref={ref => (drawerRef = ref)}
         drawerWidth={300}

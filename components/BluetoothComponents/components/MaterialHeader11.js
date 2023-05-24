@@ -5,12 +5,7 @@ function MaterialHeader11(props) {
   return (
     <View style={[styles.container, props.style]}>
       <View style={styles.group}>
-        <Image
-          source={require("../assets/images/left-arrow3.png")}
-          resizeMode="contain"
-          style={styles.image}
-        ></Image>
-        <Text style={styles.bluetooth}>BLUETOOTH</Text>
+        <Text style={styles.bluetooth}>{props.title}</Text>
         <Image
           source={require("../assets/images/settings2.png")}
           resizeMode="contain"
@@ -53,7 +48,8 @@ const styles = StyleSheet.create({
     fontFamily: "roboto-700",
     color: "rgba(255,255,255,1)",
     height: 19,
-    width: 84
+    width: 84,
+    fontSize: 18,
   },
   image2: {
     width: 23,

@@ -13,7 +13,7 @@ console.log(props);
 console.log(navigation); 
   return (
     <View style={styles.container}>
-      <MaterialHeader11 style={styles.materialHeader11}></MaterialHeader11>
+      <MaterialHeader11 title="Bluetooth" style={styles.materialHeader11}></MaterialHeader11>
       <D onPressPrimary={props.onPressPrimary} onPressViolet2={props.onPressViolet2} onPressDanger={props.onPressDanger} onPressViolet3={props.onPressViolet3} style={styles.bottoniBluetooth}></D>
       <View style={styles.scrollBluetooth}>
         <ScrollView
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   },
   materialHeader11: {
     width: "100%",
-    height: 56
+    height: 56,
   },
   bottoniBluetooth: {
     width: 324,
