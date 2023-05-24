@@ -18,11 +18,13 @@ function MaterialIconButtonsFooter2({ navigation, ...props }) {
         style={styles.image2}
       />
     </TouchableOpacity>
+    <TouchableOpacity onPress={() => navigation.navigate('WifiScreen')}>
         <Image
           source={require("../assets/images/wifi_(1)3.png")}
           resizeMode="contain"
           style={styles.image3}
         ></Image>
+    </TouchableOpacity>
       </View>
     </View>
   );
