@@ -122,9 +122,8 @@ const WifiScreen = props => {
       <Wifi
         navigation={navigation}
         onPress={deviceScan}
-        scannedWifi={scannedWifi}></Wifi>
-
-      {/* 
+        scannedWifi={scannedWifi}
+        onPressConnect={selectWifi}></Wifi>
       <Modal visible={!!connectedDevice} animationType="slide">
         <View
           style={{
@@ -134,7 +133,7 @@ const WifiScreen = props => {
             gap: 10,
           }}>
           <Text style={styles.deviceData}>{connectedDevice?.SSID || ''}</Text>
-        
+
           <TextInput
             placeholder="password"
             style={styles.deviceData}
@@ -163,7 +162,9 @@ const WifiScreen = props => {
             }}
           />
         </View>
-      </Modal> */}
+      </Modal>
+      {/*
+       */}
     </View>
   );
 };

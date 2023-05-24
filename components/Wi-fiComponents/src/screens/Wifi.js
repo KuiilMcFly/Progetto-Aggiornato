@@ -23,8 +23,8 @@ function Wifi({navigation, ...props} ) {
           {props.scannedWifi.map(device => (
             <Button
               key={device.SSID}
-              label={`${device.SSID}`}
-              onPress={() => selectWifi(device)}
+              title={`${device.SSID}`}
+              onPress={() => props.onPressConnect(device)}
             
             />
           ))}
