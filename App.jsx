@@ -19,6 +19,7 @@ import {IntlProvider, FormattedMessage, createIntl} from 'react-intl';
 import {Image} from 'react-native-elements';
 import {ScrollView} from 'react-native';
 import WifiScreen from './screens/WifiScreen';
+import Wifi from './components/Wi-fiComponents/src/screens/Wifi';
 
 // Configura l'istanza Intl
 const intl = createIntl({
@@ -158,7 +159,7 @@ const App = ({navigation}) => {
             />
             <Button
               title={t('WifiScreen')}
-              onPress={() => navigation.navigate('WifiScreen')}
+              onPress={() => navigation.navigate('Wifi')}
             />
           </View>
         </ScrollView>
@@ -179,7 +180,7 @@ function AppNavigation() {
           <Stack.Screen name="Home" component={App} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="bluetooth" component={bluetooth} />
-          <Stack.Screen name="WifiScreen" component={WifiScreen} />
+          <Stack.Screen name="Wifi" component={Wifi} />
         </Stack.Navigator>
       </NavigationContainer>
     </IntlProvider>

@@ -40,13 +40,11 @@ const styles = StyleSheet.create({
     elevation: 3
   },
   group: {
-    width: 268,
+    width: "100%",
     height: 42,
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     alignItems: "center",
-    marginLeft: 53,
-    marginTop: 7
   },
   image: {
     width: 33,

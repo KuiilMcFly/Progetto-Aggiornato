@@ -30,15 +30,15 @@ const styles = StyleSheet.create({
     flex: 1
   },
   group1: {
-    width: 360,
-    height: 738,
+    width: "100%",
+    height: "100%",
     alignItems: "center",
     justifyContent: "space-between",
-    marginTop: 22
+    
   },
   materialHeader1: {
     height: 56,
-    width: 360
+    width: "100%"
   },
   materialButtonViolet13: {
     height: 61,
@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
     borderRadius: 15
   },
   scrollArea: {
-    width: 294,
-    height: 460,
+    width: "90%",
+    height: "65%",
     backgroundColor: "rgba(230, 230, 230,1)"
   },
   scrollArea_contentContainerStyle: {
@@ -56,7 +56,8 @@ const styles = StyleSheet.create({
   },
   footerBluetooth1: {
     height: 56,
-    width: 360
+    width: "100%",
+    justifyContent: 'center',
   }
 });
 
