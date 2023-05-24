@@ -1,16 +1,19 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Image, Text } from "react-native";
+import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
 
 function MaterialHeader11(props) {
+  const { navigation, onSettingPress } = props;
   return (
     <View style={[styles.container, props.style]}>
       <View style={styles.group}>
         <Text style={styles.bluetooth}>{props.title}</Text>
-        <Image
-          source={require("../assets/images/settings2.png")}
-          resizeMode="contain"
-          style={styles.image2}
-        ></Image>
+        <TouchableOpacity onPress={() => navigation.navigate('Setting',  {navigation})}>
+          <Image
+            source={require("../assets/images/settings2.png")}
+            resizeMode="contain"
+            style={styles.image2}
+          ></Image>
+        </TouchableOpacity>
       </View>
     </View>
   );

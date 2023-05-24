@@ -1,0 +1,1 @@
+export { default as Setting } from "./src/screens/Setting.js";

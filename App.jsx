@@ -22,6 +22,8 @@ import WifiScreen from './screens/WifiScreen';
 import Wifi from './components/Wi-fiComponents/src/screens/Wifi';
 import MaterialIconButtonsFooter2 from './components/BluetoothComponents/components/MaterialIconButtonsFooter2';
 import MaterialHeader11 from './components/BluetoothComponents/components/MaterialHeader11';
+import {Setting} from './components/SettingComponents';
+
 // Configura l'istanza Intl
 const intl = createIntl({
   locale: i18n.language,
@@ -125,6 +127,10 @@ const App = ({navigation}) => {
   console.log('Encrypted:', encrypted);
   console.log('Decrypted:', decrypted);
 
+  const handleSettingPress = () => {
+    navigation.navigate('Setting');
+  };
+
   return (
     <SafeAreaView
       style={{
@@ -132,7 +138,12 @@ const App = ({navigation}) => {
         flexShrink: 0,
       }}>
       <View style={{flex: 1, flexDirection: 'column'}}>
-        <MaterialHeader11 title="Home" style={{flex: 0}} />
+        <MaterialHeader11
+          title="Home"
+          navigation={navigation}
+          onSettingPress={handleSettingPress}
+          style={{flex: 0}}
+        />
         <View style={{justifyContent: 'space-between', flex: 1}}>
           <DrawerLayoutAndroid
             ref={ref => (drawerRef = ref)}
@@ -194,6 +205,7 @@ function AppNavigation() {
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="bluetooth" component={bluetooth} />
           <Stack.Screen name="Wifi" component={WifiScreen} />
+          <Stack.Screen name="Setting" component={Setting} />
         </Stack.Navigator>
       </NavigationContainer>
     </IntlProvider>
