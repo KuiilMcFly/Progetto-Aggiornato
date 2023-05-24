@@ -5,12 +5,13 @@ function MaterialIconButtonsFooter2({ navigation, ...props }) {
   return (
     <View style={[styles.container, props.style]}>
       <View style={styles.group}>
+      <TouchableOpacity onPress={() => navigation.navigate('bluetooth')}>
         <Image
           source={require("../assets/images/bluetooth_(2)3.png")}
           resizeMode="contain"
           style={styles.image}
-          
         ></Image>
+        </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Home')}>
       <Image
         source={require("../assets/images/home_(2)3.png")}
