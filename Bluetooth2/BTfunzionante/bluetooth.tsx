@@ -232,14 +232,15 @@ const Bluetooth = props => {
   }
 
   return (
-    <IndexBluetooth
-      navigation={navigation}
-      onPressPrimary={activeBluetooth}
-      onPressDanger={stopBluetooth}
-      onPressViolet2={deviceScan}
-      onPressViolet3={deviceStopScan}
-      scannedDevices={scannedDevices}
-      onPressConnect={connect}>
+    <View>
+      <IndexBluetooth
+        navigation={navigation}
+        onPressPrimary={activeBluetooth}
+        onPressDanger={stopBluetooth}
+        onPressViolet2={deviceScan}
+        onPressViolet3={deviceStopScan}
+        scannedDevices={scannedDevices}
+        onPressConnect={connect}></IndexBluetooth>
       <Modal visible={!!selectedDevice} animationType="slide">
         <View
           style={{
@@ -270,7 +271,6 @@ const Bluetooth = props => {
           />
         </View>
       </Modal>
-
       <Modal visible={isDisconnectedModalVisible} animationType="slide">
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
           <Text style={styles.deviceData}>Connessione interrotta</Text>
@@ -283,7 +283,7 @@ const Bluetooth = props => {
           />
         </View>
       </Modal>
-    </IndexBluetooth>
+    </View>
 
     /*   <View>
       <Spinner
