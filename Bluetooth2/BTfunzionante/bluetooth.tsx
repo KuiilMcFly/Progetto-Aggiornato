@@ -233,6 +233,11 @@ const Bluetooth = props => {
 
   return (
     <View>
+      <Spinner
+        visible={spinner}
+        textContent={'Loading...'}
+        textStyle={styles.spinnerTextStyle}
+      />
       <IndexBluetooth
         navigation={navigation}
         onPressPrimary={activeBluetooth}
@@ -284,72 +289,6 @@ const Bluetooth = props => {
         </View>
       </Modal>
     </View>
-
-    /*   <View>
-      <Spinner
-        visible={spinner}
-        textContent={'Loading...'}
-        textStyle={styles.spinnerTextStyle}
-      />
-      <Text>Hello World</Text>
-      <Button title="Scan" onPress={deviceScan} />
-      <Button title="Stop Scan" onPress={deviceStopScan} />
-      <Button title="Attiva Bluetooth" onPress={activeBluetooth} />
-      <Button title="Disattiva bluetooth" onPress={stopBluetooth} />
-      <ScrollView>
-        {scannedDevices.map(device => (
-          <CustomButtonBT
-            key={device.id}
-            title={`${device.name}`}
-            onPress={() => connect(device)}
-            style={BluetoothStyles.btButton}
-          />
-        ))}
-      </ScrollView>
-      <Modal visible={!!selectedDevice} animationType="slide">
-        <View
-          style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: 10,
-          }}>
-          <Text style={styles.deviceData}>{selectedDevice?.name || ''}</Text>
-          <Text style={styles.deviceData}>{selectedDevice?.id || ''}</Text>
-
-          <Text style={styles.deviceData}>
-            Current connection status:{' '}
-            {selectedDevice ? 'Connected' : 'Not connected'}
-          </Text>
-
-          <Text style={styles.deviceData}>
-            Percentuale di carica della batteria: {batteryLevel}%
-          </Text>
-
-          <Text style={styles.deviceData}>
-            Characteristic UUID: {characteristicUUID}
-          </Text>
-
-          <Button
-            title="Close"
-            onPress={() => stopBluetoothConnection(selectedDevice?.id)}
-          />
-        </View>
-      </Modal>
-
-      <Modal visible={isDisconnectedModalVisible} animationType="slide">
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          <Text style={styles.deviceData}>Connessione interrotta</Text>
-          <Button
-            title="Torna alla schermata principale"
-            onPress={() => {
-              setIsDisconnectedModalVisible(false);
-              navigation.navigate('Homepage');
-            }}
-          />
-        </View>
-      </Modal>
-    </View> */
   );
 };
 export default Bluetooth;
