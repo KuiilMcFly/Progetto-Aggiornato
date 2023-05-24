@@ -1,13 +1,15 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import MaterialHeader14 from "../components/MaterialHeader14";
 import BtnSetting from "../components/BtnSetting";
+import { NavigationContext } from '@react-navigation/native';
 
 function Setting(props) {
+  const navigation = useContext(NavigationContext);
   return (
     <View style={styles.container}>
       <View style={styles.group}>
-        <MaterialHeader14 style={styles.materialHeader14}></MaterialHeader14>
+        <MaterialHeader14 navigation={navigation} style={styles.materialHeader14}></MaterialHeader14>
         
         <Text style={styles.lingua}>LINGUA :</Text>
         <BtnSetting style={styles.btnSetting}></BtnSetting>

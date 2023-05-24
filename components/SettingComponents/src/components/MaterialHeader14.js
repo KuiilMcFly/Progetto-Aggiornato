@@ -1,15 +1,17 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Image, Text } from "react-native";
+import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
 
-function MaterialHeader14(props) {
+function MaterialHeader14({ navigation, ...props }) {
   return (
     <View style={[styles.container, props.style]}>
       <View style={styles.group}>
-        <Image
-          source={require("../assets/images/left-arrow5.png")}
-          resizeMode="contain"
-          style={styles.image}
-        ></Image>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <Image
+            source={require('../assets/images/left-arrow5.png')}
+            resizeMode="contain"
+            style={styles.image}
+          />
+        </TouchableOpacity>
         <Text style={styles.setting}>SETTING</Text>
       </View>
     </View>

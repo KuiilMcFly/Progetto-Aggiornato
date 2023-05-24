@@ -127,6 +127,10 @@ const App = ({navigation}) => {
   console.log('Encrypted:', encrypted);
   console.log('Decrypted:', decrypted);
 
+  const handleBackPress = () => {
+    console.log('Back button pressed');
+    navigation.goBack();
+  };
   const handleSettingPress = () => {
     navigation.navigate('Setting');
   };
@@ -141,6 +145,7 @@ const App = ({navigation}) => {
         <MaterialHeader11
           title="Home"
           navigation={navigation}
+          onBackPress={handleBackPress}
           onSettingPress={handleSettingPress}
           style={{flex: 0}}
         />
@@ -194,7 +199,7 @@ const App = ({navigation}) => {
 
 const Stack = createNativeStackNavigator();
 
-function AppNavigation() {
+function AppNavigation({navigation}) {
   return (
     <IntlProvider
       locale={i18n.language}
@@ -205,7 +210,9 @@ function AppNavigation() {
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="bluetooth" component={bluetooth} />
           <Stack.Screen name="Wifi" component={WifiScreen} />
-          <Stack.Screen name="Setting" component={Setting} />
+          <Stack.Screen name="Setting">
+            {props => <Setting {...props} navigation={navigation} />}
+          </Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     </IntlProvider>
