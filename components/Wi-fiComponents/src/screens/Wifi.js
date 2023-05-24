@@ -69,7 +69,10 @@ const styles = StyleSheet.create({
   },
   scrollArea_contentContainerStyle: {
     height: '100%',
-    width: 294
+    width: '100%',
+    alignItems: 'center',
+    padding: 10, 
+    gap: 10,
   },
   footerBluetooth1: {
     height: 56,
