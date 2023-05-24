@@ -37,8 +37,8 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     justifyContent: "space-between",
-    width: 360,
-    height: 736
+    width: "100%",
+    height: "100%",
   },
   materialHeader11: {
     width: 360,
