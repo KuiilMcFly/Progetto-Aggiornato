@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { StyleSheet, View, ScrollView } from "react-native";
 import MaterialHeader13 from "../components/MaterialHeader13";
 import MaterialButtonViolet13 from "../components/MaterialButtonViolet13";
-import MaterialIconButtonsFooter2 from "../components/MaterialIconButtonsFooter2";
+import MaterialIconButtonsFooter2 from "../../../BluetoothComponents/components/MaterialIconButtonsFooter2";
 
-function Wifi(props) {
+function Wifi({navigation}, ...props) {
   return (
     <View style={styles.container}>
       <View style={styles.group1}>
@@ -18,6 +18,7 @@ function Wifi(props) {
           ></ScrollView>
         </View>
         <MaterialIconButtonsFooter2
+          navigation={navigation}
           style={styles.footerBluetooth1}
         ></MaterialIconButtonsFooter2>
       </View>

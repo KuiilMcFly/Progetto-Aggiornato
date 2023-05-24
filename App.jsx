@@ -20,6 +20,7 @@ import {Image} from 'react-native-elements';
 import {ScrollView} from 'react-native';
 import WifiScreen from './screens/WifiScreen';
 import Wifi from './components/Wi-fiComponents/src/screens/Wifi';
+import MaterialIconButtonsFooter2 from './components/BluetoothComponents/components/MaterialIconButtonsFooter2';
 
 // Configura l'istanza Intl
 const intl = createIntl({
@@ -162,6 +163,7 @@ const App = ({navigation}) => {
               onPress={() => navigation.navigate('Wifi')}
             />
           </View>
+          <MaterialIconButtonsFooter2 navigation={navigation} />
         </ScrollView>
       </DrawerLayoutAndroid>
     </SafeAreaView>
