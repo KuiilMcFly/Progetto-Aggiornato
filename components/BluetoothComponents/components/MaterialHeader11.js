@@ -38,13 +38,12 @@ const styles = StyleSheet.create({
     elevation: 3
   },
   group: {
-    width: 345,
-    height: 32,
+    flex: 1,
+    width: "100%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginLeft: 8,
-    marginTop: 12
+    padding: 8,
   },
   image: {
     width: 23,
