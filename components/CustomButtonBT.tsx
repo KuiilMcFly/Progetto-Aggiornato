@@ -7,7 +7,7 @@ type CustomButtonBTProps = {
   style?: ViewStyle;
 };
 
-const CustomButtonBT = ({onPress, label, style}: CustomButtonBTProps) => {
+const CustomButtonBT2 = ({onPress, label, style}: CustomButtonBTProps) => {
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -23,8 +23,8 @@ const CustomButtonBT = ({onPress, label, style}: CustomButtonBTProps) => {
         style={{
           textAlign: 'center',
           fontWeight: '700',
-          fontSize: 16,
-          color: '#fff',
+          fontSize: 25,
+          color: 'white',
         }}>
         {label}
       </Text>
@@ -32,4 +32,4 @@ const CustomButtonBT = ({onPress, label, style}: CustomButtonBTProps) => {
   );
 };
 
-export default CustomButtonBT;
+export default CustomButtonBT2;

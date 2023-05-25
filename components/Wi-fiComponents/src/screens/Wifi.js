@@ -4,45 +4,44 @@ import MaterialHeader11 from "../../../BluetoothComponents/components/MaterialHe
 import MaterialButtonViolet13 from "../components/MaterialButtonViolet13";
 import MaterialIconButtonsFooter2 from "../../../BluetoothComponents/components/MaterialIconButtonsFooter2";
 import { Button } from "react-native-elements";
+import CustomConnectBt from "../../../CustomConnectBt";
+import { FlatList } from 'react-native';
 
-function Wifi({navigation, ...props} ) {
+function Wifi({ navigation, ...props }) {
+
+  const renderItem = ({ item }) => (
+    <CustomConnectBt
+      key={item.SSID}
+      label={`${item.SSID}`}
+      onPress={() => props.onPressConnect(item)}
+    />
+  );
   return (
-    <View style={styles.container}>
-      <View style={styles.group1}>
-        <MaterialHeader11 navigation={navigation} title="Wi-fi" style={styles.materialHeader1}></MaterialHeader11>
+    <View style={styles1.container}>
+      <View style={styles1.group1}>
+        <MaterialHeader11 navigation={navigation} title="Wi-fi" style={styles1.materialHeader1}></MaterialHeader11>
         <MaterialButtonViolet13 onPress={props.onPress}
-          style={styles.materialButtonViolet13}
+          style={styles1.materialButtonViolet13}
         ></MaterialButtonViolet13>
-        <View style={styles.scrollArea}>
-          <ScrollView
-            contentContainerStyle={styles.scrollArea_contentContainerStyle}
-          >
-
-
-       
-          {props.scannedWifi.map(device => (
-            <Button
-              key={device.SSID}
-              title={`${device.SSID}`}
-              onPress={() => props.onPressConnect(device)}
-            
-            />
-          ))}
-     
-
-          </ScrollView>
+        <View style={styles1.scrollArea}>
+          <FlatList
+            style={styles1.scrollArea_contentContainerStyle}
+            data={props.scannedWifi}
+            renderItem={renderItem}
+            keyExtractor={item => item.SSID}
+          />
         </View>
         <MaterialIconButtonsFooter2
           title="Wi-fi"
           navigation={navigation}
-          style={styles.footerBluetooth1}
+          style={styles1.footerBluetooth1}
         ></MaterialIconButtonsFooter2>
       </View>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
+export const styles1 = StyleSheet.create({
   container: {
     flex: 1
   },
@@ -51,7 +50,7 @@ const styles = StyleSheet.create({
     height: "100%",
     alignItems: "center",
     justifyContent: "space-between",
-    
+
   },
   materialHeader1: {
     height: 56,
@@ -70,8 +69,7 @@ const styles = StyleSheet.create({
   scrollArea_contentContainerStyle: {
     height: '100%',
     width: '100%',
-    alignItems: 'center',
-    padding: 10, 
+    padding: 10,
     gap: 10,
   },
   footerBluetooth1: {
